@@ -1,0 +1,12 @@
+<!--18 Il ProductDetailsComponent gestisce la visualizzazione di ogni prodotto. Angular Router mostra i componenti in base all'URL del browser e ai percorsi definiti. -->
+<!--24 aggiorniamo il template per mostrare i dettagli di un prodotto con una direttiva ngIf. Se un prodotto esiste, il <div> esegue il rendering con un nome, un prezzo e una descrizione -->
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+  <h3>{{ product.name }}</h3>
+  <!--25 La linea {{ product.price | currency }}  usa la pipe "currency" per trasformare product.price da un numero a una stringa di valuta. Una pipe è un modo per trasformare i dati in un template HTML.-->
+  <h4>{{ product.price | currency }}</h4>
+  <p>{{ product.description }}</p>
+  <!--32 Aggiungiamo un pulsante con l'etichetta Buy e associamo l'evento click() al metodo addToCart(). Questo codice aggiorna il template product-details con un pulsante Buy che aggiunge il prodotto corrente al carrello.-->
+  <button type="button" (click)="addToCart(product)">Buy</button>
+</div>

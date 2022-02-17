@@ -1,0 +1,13 @@
+<!-- ->44 shipping.component.ts
+45 aggiorniamo il template ShippingComponent per visualizzare i tipi e i prezzi di spedizione utilizzando la pipe async. La pipe async restitutisce il valore più recente da un flusso di dati e continua a farlo per tutta la vita di un determinato componente. Quando Angular distrugge quel componente, la pipe async si interrompe automaticamente.-->
+<h3>Shipping Prices</h3>
+
+<!--46 aggiungiamo un link dalla vista CartComponent alla vista ShippingComponent.-->
+<p>
+  <a href="/shipping">Shipping Prices</a>
+</p>
+
+<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.price | currency }}</span>
+</div>

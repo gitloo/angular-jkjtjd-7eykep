@@ -1,0 +1,7 @@
+<!--37 aggiorniamo il modello del carrello con un'intestazione e utilizziamo un <div> con un *ngFor per visualizzare ciascuno degli articoli del carrello con il suo nome e prezzo. Il template CartComponent risultante è il seguente. -->
+<h3>Cart</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>

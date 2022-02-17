@@ -1,0 +1,32 @@
+<h2>Products</h2>
+<!--0 
+With *ngFor, the <div> repeats for each product in the list.
+Structural directives shape or reshape the DOM's structure,
+by adding, removing, and manipulating elements. -->
+<div *ngFor="let product of products">
+  <h3>
+    <!--1 Impostare title in modo che sia product.name,
+      utilizzando la sintassi di binding di proprietà [ ], -->
+    <!--17 Modifichiamo l'elemento anchor del product.name, per includere un routerLink con un product.id come parametro. La direttiva routerLink aiuta a personalizzare l'elemento anchor. In questo caso la route, o URL, contiene un segmento fisso, /products, mentre il segmento finale è variabile, avendo inserito la proprietà id del prodotto corrente.
+    Ad esempio, l'URL di un prodotto con ID 1 sarebbe simile a https://getting-started-myfork.stackblitz.io/products/1.-->
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <!---2 per aggiungere le descrizioni del prodotto, utilizzare una direttiva *ngIf su un elemento <p>, in modo che Angular crei l'elemento <p> solo se il prodotto corrente ha una descrizione. -->
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <!--3 il binding di eventi avviene utilizzando "()" attorno all'evento
+   come ad esempio (click) -->
+  <button type="button" (click)="share()">Share</button>
+
+  <!--10 Per visualizzare ProductAlertsComponent come figlio di ProductListComponent, bisogna aggiungere l'elemento <app-product-alerts> a product-list.component.html. Per passare il prodotto corrente come input al componente è necessario il binding di proprietà.-->
+  <!--15 Aggiorniamo il ProductListComponent per ricevere i dati dal ProductAlertsComponent.
+  In product-list.component.html, leghiamo <app-product-alerts> al metodo onNotify() da product-list.component.ts. <app-product-alerts> è ciò che mostra il pulsante Notify Me.-->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
